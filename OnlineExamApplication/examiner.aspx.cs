@@ -4,6 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data.SqlClient;
+using System.Configuration;
+using System.Data;
+using System.Windows.Forms;
 
 namespace OnlineExamApplication
 {
@@ -11,7 +15,47 @@ namespace OnlineExamApplication
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            //connecting string 
+            string connString = ConfigurationManager.ConnectionStrings["onlineExamDB"].ConnectionString;
+
+            //connection
+            SqlConnection con = new SqlConnection(connString);
+
+            //open connection
+            con.Open();
+
 
         }
+
+        protected void btnTestTitle_Click(object sender, EventArgs e)
+        {
+            //connecting string 
+            string connString = ConfigurationManager.ConnectionStrings["onlineExamDB"].ConnectionString;
+
+            //connection
+            SqlConnection con = new SqlConnection(connString);
+
+            //open connection
+            con.Open();
+
+            ////command object to run procedure
+            SqlCommand cmd = new SqlCommand("procAddNewTest", con);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("user_ID", pmedCode.Text);
+            cmd.Parameters.AddWithValue("t_TestDescription", txtTestTitle.Text);
+            //execute command
+            int k = cmd.ExecuteNonQuery();
+            if (k != 0)
+            {
+                Response.Write("<script>alert('New exam title is successfully added!!!!');</script>");
+            }
+
+            con.Close(); //close connection
+
+        }
+
+       
     }
 }
