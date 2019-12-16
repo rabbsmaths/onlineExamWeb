@@ -42,7 +42,7 @@ namespace OnlineExamApplication
                     //set title
                     this.head = "Manage or Add New Exam";
                     //set link
-                    this.link = "eximaner";
+                    this.link = "examiner";
                 }else if (r["name"].ToString() == "student")
                 {
                     //set message
