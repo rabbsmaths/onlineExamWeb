@@ -43,6 +43,11 @@ namespace OnlineExamApplication
 
             cmd.CommandType = CommandType.StoredProcedure;
 
+            //get userID
+            //check if medication already exist
+            SqlCommand command = new SqlCommand("SELECT ID FROM tblUser WHERE Email =@Email", con);
+            command.Parameters.AddWithValue("@Email", HttpContext.Current.User.Identity.Name);
+            SqlDataReader r = command
             cmd.Parameters.AddWithValue("user_ID", pmedCode.Text);
             cmd.Parameters.AddWithValue("t_TestDescription", txtTestTitle.Text);
             //execute command
