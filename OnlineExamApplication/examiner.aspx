@@ -25,5 +25,40 @@
         </div>
         </div>
         <%-- *********************************************************************--%>
+
+        <div id="divSelectTest" runat ="server">
+          <div class="form-group">
+            <asp:Label runat="server" AssociatedControlID="dlSelectTest" CssClass="col-md-2 control-label">Select Exam</asp:Label>
+            <div class="col-md-10">
+                 <asp:DropDownList CssClass="dropdopwn-menu form-control" ID="dlSelectTest" runat="server" Width="281px" AppendDataBoundItems="False" />
+            </div>
+        </div>
+         </div>
+
+         <%-- *********************************************************************--%>
+         <div id="divAddQ" runat ="server">
+            <div class="form-group">
+            <asp:Label runat="server" AssociatedControlID="txtQuestion" CssClass="col-md-2 control-label">Question</asp:Label>
+            <div class="col-md-10">
+                <asp:TextBox runat="server" ID="txtQuestion" CssClass="form-control" TextMode="MultiLine" Width="280px" />
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="txtQuestion"
+                    CssClass="text-danger" ErrorMessage="The question field is required." />
+            </div>
+        </div>
+         <div class="form-group">
+            <asp:Label runat="server" AssociatedControlID="dlQuestionType" CssClass="col-md-2 control-label">Question Type</asp:Label>
+            <div class="col-md-10">
+                 <asp:DropDownList CssClass="dropdopwn-menu form-control" ID="dlQuestionType" runat="server" Width="281px" AppendDataBoundItems="False" />
+            </div>
+        </div>
+           <div class="form-group">
+            <asp:Label runat="server" AssociatedControlID="txtAnswer" CssClass="col-md-2 control-label">Answer</asp:Label>
+            <div class="col-md-10">
+                <asp:TextBox runat="server" ID="txtAnswer" CssClass="form-control" TextMode="SingleLine" />
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="txtAnswer"
+                    CssClass="text-danger" ErrorMessage="The answer field is required." />
+            </div>
+        </div>
+        </div>
     </div>
 </asp:Content>
