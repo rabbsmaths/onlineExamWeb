@@ -5,7 +5,7 @@
     <div class="jumbotron">
         <h3 style="font-weight:bold;">Exam</h3>
         <p class="lead"><%:msg %><p>
-        <p><a href="http://www.asp.net" class=" btn-primary btn">Learn more &raquo;</a></p>
+        <p><a href="<%:link %>" class=" btn-primary btn"><%:head %> &raquo;</a></p>
     </div>
 
 </asp:Content>
