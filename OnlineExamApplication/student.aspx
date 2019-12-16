@@ -10,7 +10,7 @@
           <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="dlSelectTest" CssClass="col-md-2 control-label">Select Exam</asp:Label>
             <div class="col-md-10">
-                 <asp:DropDownList CssClass="dropdopwn-menu form-control" ID="dlSelectTest" runat="server" Width="281px" AppendDataBoundItems="False" />
+                 <asp:DropDownList CssClass="dropdopwn-menu form-control" ID="dlSelectTest" runat="server" Width="281px" AppendDataBoundItems="False" AutoPostBack="True" />
             </div>
         </div>
             <div class="form-group">
@@ -18,10 +18,16 @@
                 <asp:Button runat="server"  Text="Start Exam" CssClass="btn btn-default" ID="btnStartExam" OnClick="btnStartExam_Click"  />
             </div>
        </div>
-
+   
+  
         <div id ="mainDIv" runat ="server">
 
         </div>
 
+            <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <asp:Button runat="server"  Text="Submit Exam" CssClass="btn btn-default" ID="btnSubmitTest" OnClick="btnSubmitTest_Click"   />
+            </div>
+       </div>
     </div>
 </asp:Content>

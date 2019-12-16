@@ -26,7 +26,8 @@ namespace OnlineExamApplication
 
             if (!Page.IsPostBack)
             {
-               
+                btnSubmitTest.Visible = false;
+
                 bindLookUpData(connString); //load data
             }
 
@@ -81,21 +82,31 @@ namespace OnlineExamApplication
 
 
             //create dynamic html 
+            int count = 1;
+            int lookups = 1;
             while (r.Read())
             {
                 if (r["Question_Type"].ToString().ToLower() == "number" || r["Question_Type"].ToString().ToLower() == "text")
                 {
-                    mainDIv.InnerHtml += "<div class='form-group'><Label runat='server' Class='col-md-2 control-label'>" + r["Question"].ToString() + "</Label><div class='col-md-10'><input type='" + r["Question_Type"].ToString() + "' runat='server' ID='txtTestTitle' Class='form-control' width ='280' /> </div></div>";
+                    mainDIv.InnerHtml += "<div class='form-group'><Label runat='server' Class='col-md-2 control-label'>" + r["Question"].ToString() + "</Label><div class='col-md-10'><input type='" + r["Question_Type"].ToString() + "' runat='server' ID='Question" + count + "' Class='form-control' width ='280' /> </div></div>";
+                    count++;
                 }
                 else
                 {
-                    mainDIv.InnerHtml += "<div class='form-group'><Label runat='server' Class='col-md-2 control-label'>" + r["Question"].ToString() + "</Label><div class='col-md-10'><select id = 'yesno' runat ='server' Class='form-control' style='width:280px;'><option value='No'>No</option><option value='Yes'>Yes</option></select> </div></div>";
+                    mainDIv.InnerHtml += "<div class='form-group'><Label runat='server' Class='col-md-2 control-label'>" + r["Question"].ToString() + "</Label><div class='col-md-10'><select id = 'yesno" + lookups + "' runat ='server' Class='form-control' style='width:280px;'><option value='No'>No</option><option value='Yes'>Yes</option></select> </div></div>";
+                    lookups++;
                 }
             }
-
+           
             r.Close();//close reader
-
+            btnStartExam.Visible = false;
+            btnSubmitTest.Visible = true;
             con.Close();//close connection
+        }
+
+        protected void btnSubmitTest_Click(object sender, EventArgs e)
+        {
+
         }
 
     }
