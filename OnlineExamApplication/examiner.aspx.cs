@@ -38,23 +38,32 @@ namespace OnlineExamApplication
             //open connection
             con.Open();
 
-            ////command object to run procedure
-            SqlCommand cmd = new SqlCommand("procAddNewTest", con);
-
-            cmd.CommandType = CommandType.StoredProcedure;
 
             //get userID
             //check if medication already exist
             SqlCommand command = new SqlCommand("SELECT ID FROM tblUser WHERE Email =@Email", con);
             command.Parameters.AddWithValue("@Email", HttpContext.Current.User.Identity.Name);
-            SqlDataReader r = command
-            cmd.Parameters.AddWithValue("user_ID", pmedCode.Text);
+            SqlDataReader r = command.ExecuteReader();
+            string ID = "";
+            while (r.Read())
+            {
+                ID = r[0].ToString();
+            }
+            r.Close();
+
+            ////command object to run procedure
+            SqlCommand cmd = new SqlCommand("procAddNewTest", con);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("user_ID", ID);
             cmd.Parameters.AddWithValue("t_TestDescription", txtTestTitle.Text);
             //execute command
             int k = cmd.ExecuteNonQuery();
             if (k != 0)
             {
                 Response.Write("<script>alert('New exam title is successfully added!!!!');</script>");
+                txtTestTitle.Text = "";
             }
 
             con.Close(); //close connection
