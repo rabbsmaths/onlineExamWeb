@@ -22,13 +22,13 @@ namespace OnlineExamApplication {
         protected global::System.Web.UI.WebControls.Literal ErrorMessage;
         
         /// <summary>
-        /// divSelectTest control.
+        /// mainDIv control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divSelectTest;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl mainDIv;
         
         /// <summary>
         /// dlSelectTest control.

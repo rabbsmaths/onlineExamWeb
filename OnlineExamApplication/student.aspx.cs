@@ -79,7 +79,10 @@ namespace OnlineExamApplication
             command.Parameters.AddWithValue("@testNo", dlSelectTest.SelectedValue.ToString());
             SqlDataAdapter da = new SqlDataAdapter(command);
             DataTable dt = new DataTable();
- 
+
+
+            mainDIv.InnerHtml = "<input type='text' name='firstname' runat='server'>" + mainDIv.InnerHtml;
+
             con.Close();//close connection
         }
 

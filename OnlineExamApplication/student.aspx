@@ -5,9 +5,8 @@
         <asp:Literal runat="server" ID="ErrorMessage" />
     </p>
 
-    <div class="form-horizontal">
+    <div class="form-horizontal" runat="server" id="mainDIv">
         <hr />
-        <div id="divSelectTest" runat ="server">
           <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="dlSelectTest" CssClass="col-md-2 control-label">Select Exam</asp:Label>
             <div class="col-md-10">
@@ -18,7 +17,6 @@
             <div class="col-md-offset-2 col-md-10">
                 <asp:Button runat="server"  Text="Start Exam" CssClass="btn btn-default" ID="btnStartExam" OnClick="btnStartExam_Click"  />
             </div>
-        </div>
        </div>
 
     </div>
