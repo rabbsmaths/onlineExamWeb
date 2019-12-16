@@ -34,8 +34,7 @@ namespace OnlineExamApplication
                 bindLookUpData(connString); //load data
             }
 
-
-
+            bindGridVewData(connString);//load data
         }
 
         protected void btnTestTitle_Click(object sender, EventArgs e)
@@ -83,6 +82,7 @@ namespace OnlineExamApplication
 
             con.Close(); //close connection
             bindLookUpData(connString); //load data
+        
         }
 
         protected void btnAddQuestion_Click(object sender, EventArgs e)
@@ -135,8 +135,10 @@ namespace OnlineExamApplication
             }
 
             con.Close(); //close connection
+            bindGridVewData(connString);//load data
         }
 
+        //bind the lookup
         public void bindLookUpData(string connString)
         {
            
@@ -168,6 +170,28 @@ namespace OnlineExamApplication
                 divAddQ.Visible = false;
                 divSelectTest.Visible = false;
             }
+            con.Close();
+        }
+
+        //bindGridview
+        public void bindGridVewData(string connString)
+        {
+            //connection
+            SqlConnection con = new SqlConnection(connString);
+
+            //open connection
+            con.Open();
+
+            //bind the questions int gridview
+            SqlCommand command = new SqlCommand("SELECT t.t_TestDescription, q.Question, q.Question_Type, q.Answer FROM tblTest t, tblQuestion q WHERE t.t_testNo = q.t_testNo AND t.t_testNo = @testNo Order By  t.t_TestDescription", con);
+            command.Parameters.AddWithValue("@testNo", dlSelectTest.SelectedValue.ToString());
+            SqlDataAdapter da = new SqlDataAdapter(command);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            grdQuestions.DataSource = dt;
+            grdQuestions.DataBind();
+
+            con.Close();
         }
 
        

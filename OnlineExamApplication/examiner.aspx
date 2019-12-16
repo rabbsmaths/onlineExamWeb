@@ -65,6 +65,30 @@
             </div>
         </div>
         </div>
+        <br />
+        <div class="form-group">
+            <asp:GridView ID="grdQuestions" runat="server" AllowSorting="True" CellPadding="4" EmptyDataText="No Test  Record Available" ForeColor="Black" GridLines="None" Width="1075px" AutoGenerateColumns="False" BackColor="Black">
+                <AlternatingRowStyle BackColor="White" ForeColor="black" />
+                <Columns>
+                    <asp:BoundField DataField="t_TestDescription" HeaderText="Test Description" SortExpression="t_TestDescription" />
+                    <asp:BoundField DataField="Question" HeaderText="Question" SortExpression="Question" />
+                    <asp:BoundField DataField="Question_Type" HeaderText="Question Type" SortExpression="Question_Type" />
+                    <asp:BoundField DataField="Answer" HeaderText="Answer" SortExpression="Answer">
+                    <ItemStyle Width="400px" />
+                    </asp:BoundField>
+                </Columns>
+                <EditRowStyle BackColor="#999999" BorderColor="Black" />
+                <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
+                <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+                <RowStyle BackColor="#F7F6F3" BorderColor="Black" ForeColor="#333333" />
+                <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
+                <SortedAscendingCellStyle BackColor="#E9E7E2" />
+                <SortedAscendingHeaderStyle BackColor="#506C8C" />
+                <SortedDescendingCellStyle BackColor="#FFFDF8" />
+                <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
+            </asp:GridView>
+        </div>
          <%-- *********************************************************************--%>
     </div>
 </asp:Content>
