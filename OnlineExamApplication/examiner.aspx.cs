@@ -27,7 +27,7 @@ namespace OnlineExamApplication
             if (!Page.IsPostBack)
             {
                 //bind question types
-                string[] quesiontype = { "Yes/No", "Text", "Numeric" };
+                string[] quesiontype = { "Yes/No", "text", "number" };
                 dlQuestionType.DataSource = quesiontype;
                 dlQuestionType.DataBind();
 

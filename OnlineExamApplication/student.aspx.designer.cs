@@ -22,15 +22,6 @@ namespace OnlineExamApplication {
         protected global::System.Web.UI.WebControls.Literal ErrorMessage;
         
         /// <summary>
-        /// mainDIv control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl mainDIv;
-        
-        /// <summary>
         /// dlSelectTest control.
         /// </summary>
         /// <remarks>
@@ -47,5 +38,14 @@ namespace OnlineExamApplication {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnStartExam;
+        
+        /// <summary>
+        /// mainDIv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl mainDIv;
     }
 }

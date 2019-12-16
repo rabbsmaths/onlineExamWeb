@@ -77,11 +77,16 @@ namespace OnlineExamApplication
             //bind the questions int gridview
             SqlCommand command = new SqlCommand("SELECT t.t_TestDescription, q.Question, q.Question_Type, q.Answer FROM tblTest t, tblQuestion q WHERE t.t_testNo = q.t_testNo AND t.t_testNo = @testNo Order By  t.t_TestDescription", con);
             command.Parameters.AddWithValue("@testNo", dlSelectTest.SelectedValue.ToString());
-            SqlDataAdapter da = new SqlDataAdapter(command);
-            DataTable dt = new DataTable();
+            SqlDataReader r = command.ExecuteReader();
 
 
-            mainDIv.InnerHtml = "<input type='text' name='firstname' runat='server'>" + mainDIv.InnerHtml;
+            //create dynamic html 
+            while (r.Read())
+            {
+                mainDIv.InnerHtml += "<div class='form-group'><Label runat='server' Class='col-md-2 control-label'>" + r["Question"].ToString() + "</Label><div class='col-md-10'><input type='text' runat='server' ID='txtTestTitle' Class='form-control' width ='280' /> </div></div>";
+            }
+
+            r.Close();//close reader
 
             con.Close();//close connection
         }
