@@ -59,6 +59,12 @@
                     CssClass="text-danger" ErrorMessage="The answer field is required." />
             </div>
         </div>
+       <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <asp:Button runat="server"  Text="Add Question" CssClass="btn btn-default" ID="btnAddQuestion" OnClick="btnAddQuestion_Click"  />
+            </div>
         </div>
+        </div>
+         <%-- *********************************************************************--%>
     </div>
 </asp:Content>
