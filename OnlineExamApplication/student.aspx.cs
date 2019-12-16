@@ -13,6 +13,10 @@ namespace OnlineExamApplication
 {
     public partial class student : System.Web.UI.Page
     {
+        //public variables
+        public int totalTextBox { get; set; }
+        public int totallookUps { get; set; }
+    
         protected void Page_Load(object sender, EventArgs e)
         {
             //connecting string 
@@ -83,13 +87,19 @@ namespace OnlineExamApplication
 
             //create dynamic html 
             int count = 1;
+            int c = 1;
             int lookups = 1;
             while (r.Read())
             {
-                if (r["Question_Type"].ToString().ToLower() == "number" || r["Question_Type"].ToString().ToLower() == "text")
+                if (r["Question_Type"].ToString().ToLower() == "number" )
                 {
-                    mainDIv.InnerHtml += "<div class='form-group'><Label runat='server' Class='col-md-2 control-label'>" + r["Question"].ToString() + "</Label><div class='col-md-10'><input type='" + r["Question_Type"].ToString() + "' runat='server' ID='Question" + count + "' Class='form-control' width ='280' /> </div></div>";
+                    mainDIv.InnerHtml += "<div class='form-group'><Label runat='server' Class='col-md-2 control-label'>" + r["Question"].ToString() + "</Label><div class='col-md-10'><input type='" + r["Question_Type"].ToString() + "' runat='server' ID='Question" + count + "' Class='form-control' style='width:280px;' /> </div></div>";
                     count++;
+                }
+                else if (r["Question_Type"].ToString().ToLower() == "text")
+                {
+                    mainDIv.InnerHtml += "<div class='form-group'><Label runat='server' Class='col-md-2 control-label'>" + r["Question"].ToString() + "</Label><div class='col-md-10'><input type='" + r["Question_Type"].ToString() + "' runat='server' ID='Questions" + c + "' Class='form-control' style='width:280px;' /> </div></div>";
+                    c++;
                 }
                 else
                 {
@@ -102,11 +112,40 @@ namespace OnlineExamApplication
             btnStartExam.Visible = false;
             btnSubmitTest.Visible = true;
             con.Close();//close connection
+
+            //get total controls generated
+            this.totalTextBox = count;
+            this.totallookUps = lookups;
+
         }
 
+        //calculate total score on submission
         protected void btnSubmitTest_Click(object sender, EventArgs e)
         {
+            string connString = ConfigurationManager.ConnectionStrings["onlineExamDB"].ConnectionString;
 
+            //connection
+            SqlConnection con = new SqlConnection(connString);
+
+            //open connection
+            con.Open();
+
+            //bind the questions int gridview
+            SqlCommand command = new SqlCommand("SELECT q.Answer FROM tblTest t, tblQuestion q WHERE t.t_testNo = q.t_testNo AND t.t_testNo = @testNo Order By  t.t_TestDescription", con);
+            command.Parameters.AddWithValue("@testNo", dlSelectTest.SelectedValue.ToString());
+
+            SqlDataReader rd = command.ExecuteReader();
+
+            //count marks
+            int marks = 0;
+            for (int m = 0; m < totalTextBox; m++)
+            {
+                while (rd.Read())
+                {
+                    
+                }
+            }
+        
         }
 
     }
